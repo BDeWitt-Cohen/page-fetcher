@@ -1,7 +1,7 @@
 const request = require('request');
 const fs = require('fs');
 let args = process.argv.slice(2);
-const readline = require("readline");
+// const readline = require("readline");
 // const rl = readline.createInterface({
 //     input: process.stdin,
 //     output: process.stdout
@@ -18,7 +18,7 @@ request(domainName, (error, response, body) => {
 
   fs.access(dlPath, (err) => {
     if (err) {
-      consoile.log('Unable to save file to download path.', err);
+      console.log('Unable to save file to download path.', err);
     }
 
     fs.exists(`${dlPath}index.html`, (fileExists) => {
@@ -28,7 +28,7 @@ request(domainName, (error, response, body) => {
             console.log('There was an error saving the file: ', err);
           }
           fs.stat(dlPath, (err, stat) => {
-            console.log(`File overwritten and saved ${stat.size} bytes to ${dlPath}index.html`)
+            console.log(`File overwritten and saved ${stat.size} bytes to ${dlPath}index.html`);
           });
         });
       } else {
@@ -37,11 +37,11 @@ request(domainName, (error, response, body) => {
             console.log('There was an error saving the file: ', err);
           }
           fs.stat(dlPath, (err, stat) => {
-            console.log(`File downloaded and saved ${stat.size} bytes to ${dlPath}index.html`)
+            console.log(`File downloaded and saved ${stat.size} bytes to ${dlPath}index.html`);
           });
         });
       }
-    })
+    });
   });
 });
 
